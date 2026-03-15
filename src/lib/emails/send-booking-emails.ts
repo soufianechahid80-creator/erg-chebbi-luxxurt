@@ -33,7 +33,7 @@ export async function sendBookingEmails(booking: BookingEmailPayload) {
     resend.emails.send({
       from,
       to: booking.email,
-      reply_to: replyTo,
+      replyTo,
       subject: `Your booking request • ${booking.experienceTitle}`,
       html: customerBookingEmailTemplate({
         brandName: siteConfig.name,
@@ -45,7 +45,7 @@ export async function sendBookingEmails(booking: BookingEmailPayload) {
     resend.emails.send({
       from,
       to: ownerEmail,
-      reply_to: replyTo,
+      replyTo,
       subject: `New booking request • ${booking.experienceTitle}`,
       html: ownerBookingEmailTemplate({
         brandName: siteConfig.name,
@@ -56,3 +56,4 @@ export async function sendBookingEmails(booking: BookingEmailPayload) {
 
   return { sent: true };
 }
+
